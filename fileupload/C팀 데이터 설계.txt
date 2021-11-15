@@ -1,0 +1,73 @@
+CREATE TABLE `tblMember` (
+  `mid` char(20) NOT NULL,
+  `mpwd` char(20) NOT NULL,
+  `mname` char(20) NOT NULL,
+  `memail` char(30) NOT NULL,
+  `mzipcode` char(5) NOT NULL,
+  `maddress` char(50) NOT NULL,
+  `mlevel` char(20) NOT NULL,
+
+ PRIMARY KEY (`id`)
+)COLLATE='euckr_korean_ci';
+
+---------------------------------------
+Create Table tblProduct
+  `pid` int(11) NOT NULL,
+  `pname` char(20) NOT NULL,
+  `pprice` int(11) NOT NULL,
+  `pimg` varchar2(30) NOT NULL,
+  `hcnt` char(5) NOT NULL DEFAUL
+  `pdiscount` char(50) NOT NULL,
+  `pdetail` char(20) NOT NULL,
+  `prdate` int(11) NOT NULL,
+   primary key (pid)
+
+---------------------------------------
+CREATE TABLE `tblPayment` (
+	  `mid` char(20) NOT NULL,              NOT NULL  auto_increment  ,
+	`cost`          int(11)          비용      
+	`account num`      int(11)                     ,
+	`paydate`           date                                ,
+              `memail` char(30) NOT NULL,
+---------------------------------------
+CREATE TABLE `tblBoard` (
+	`num`               int(11)              NOT NULL  auto_increment  ,
+	`name`              varchar(20)                    ,
+	`subject`           varchar(50)                    ,
+	`content`           text                                ,
+	`pos`                smallint(7) unsigned           ,
+	`ref`               smallint(7)                    ,
+	`depth`             smallint(7) unsigned           ,
+	`regdate`          date                           ,
+	`pass`              varchar(15)                    ,
+	`ip`                  varchar(15)                    ,
+	`count`             smallint(7) unsigned           ,
+	`filename`         varchar(30)                    ,
+	`filesize`           int(11)                        ,
+	PRIMARY KEY ( `num` )
+)COLLATE='euckr_korean_ci';
+
+DROP TABLE IF EXISTS tblBcomment;
+
+
+
+CREATE TABLE `tblBcomment` (
+	`cnum` INT(11) NOT NULL AUTO_INCREMENT,
+	`num` INT(11) NULL DEFAULT NULL,
+	`name` VARCHAR(20) NULL DEFAULT NULL,
+	`comment` VARCHAR(200) NULL DEFAULT NULL,
+	`regdate` DATE NULL DEFAULT NULL,
+	PRIMARY KEY (`cnum`)
+)COLLATE='euckr_korean_ci';
+------------------------------------
+CREATE TABLE `tblOrder` (
+	`oid`               int(11)  오더아이디            ,PRIMARY KEY ( `num` )   NOT NULL  auto_increment  ,
+	`mid`              varchar(20)  고객아이디                  , FKey
+	`pid`               int(11)  상품아이디   
+	`ordate`           date(50)                    ,
+	`oname`          varchar(20)                               
+	`ophone`          int(11)                    ,
+	`oamount`          int(11)        //  오더총금액           ,
+	`opayment`         int(11)     
+             `mbuylist` char(100) NOT NULL, //구매목록
+)COLLATE='euckr_korean_ci';
